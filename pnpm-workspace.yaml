@@ -74,7 +74,3 @@ allowBuilds:
   esbuild: true
   msw: true
   unrs-resolver: true
-
-overrides:
-  "@esbuild-kit/esm-loader": ...
-  esbuild: ...
