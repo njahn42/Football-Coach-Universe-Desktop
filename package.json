@@ -16,7 +16,9 @@
     "desktop:compile": "node scripts/build-desktop.mjs",
     "desktop:build": "pnpm run builder:build && pnpm run desktop:compile",
     "desktop:start": "electron .",
-    "desktop:dev": "concurrently -k \"pnpm run builder:dev\" \"wait-on http://localhost:5173 && cross-env ELECTRON_RENDERER_URL=http://localhost:5173 electron .\""
+    "desktop:dev": "concurrently -k \"pnpm run builder:dev\" \"wait-on http://localhost:5173 && cross-env ELECTRON_RENDERER_URL=http://localhost:5173 electron .\"",
+    "desktop:package": "pnpm run desktop:build && electron-forge package",
+    "desktop:make": "pnpm run desktop:build && electron-forge make"
   },
   "dependencies": {
     "@replit/connectors-sdk": "^0.4.1"
