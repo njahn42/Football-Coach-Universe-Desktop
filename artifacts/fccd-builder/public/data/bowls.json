@@ -1,0 +1,532 @@
+[
+  {
+    "name": "Rose Bowl",
+    "zipcode": "91103",
+    "indoors": false
+  },
+  {
+    "name": "Sugar Bowl",
+    "zipcode": "70112",
+    "indoors": false
+  },
+  {
+    "name": "Orange Bowl",
+    "zipcode": "33056",
+    "indoors": false
+  },
+  {
+    "name": "Cotton Bowl",
+    "zipcode": "75207",
+    "indoors": false
+  },
+  {
+    "name": "Peach Bowl",
+    "zipcode": "30339",
+    "indoors": false
+  },
+  {
+    "name": "Fiesta Bowl",
+    "zipcode": "85251",
+    "indoors": false
+  },
+  {
+    "name": "Alamo Bowl",
+    "zipcode": "78219",
+    "indoors": false
+  },
+  {
+    "name": "Citrus Bowl",
+    "zipcode": "32819",
+    "indoors": false
+  },
+  {
+    "name": "Holiday Bowl",
+    "zipcode": "92108",
+    "indoors": false
+  },
+  {
+    "name": "Outback Bowl",
+    "zipcode": "33607",
+    "indoors": false
+  },
+  {
+    "name": "Music City Bowl",
+    "zipcode": "37201",
+    "indoors": false
+  },
+  {
+    "name": "Las Vegas Bowl",
+    "zipcode": "89118",
+    "indoors": false
+  },
+  {
+    "name": "Sun Bowl",
+    "zipcode": "79968",
+    "indoors": false
+  },
+  {
+    "name": "Hawaii Bowl",
+    "zipcode": "96813",
+    "indoors": false
+  },
+  {
+    "name": "Military Bowl",
+    "zipcode": "22207",
+    "indoors": false
+  },
+  {
+    "name": "Pinstripe Bowl",
+    "zipcode": "10451",
+    "indoors": false
+  },
+  {
+    "name": "Independence Bowl",
+    "zipcode": "71105",
+    "indoors": false
+  },
+  {
+    "name": "Birmingham Bowl",
+    "zipcode": "35233",
+    "indoors": false
+  },
+  {
+    "name": "Gasparilla Bowl",
+    "zipcode": "33602",
+    "indoors": false
+  },
+  {
+    "name": "Frisco Bowl",
+    "zipcode": "75034",
+    "indoors": false
+  },
+  {
+    "name": "Idaho Potato Bowl",
+    "zipcode": "83702",
+    "indoors": false
+  },
+  {
+    "name": "New Mexico Bowl",
+    "zipcode": "87131",
+    "indoors": false
+  },
+  {
+    "name": "Texas Bowl",
+    "zipcode": "77002",
+    "indoors": false
+  },
+  {
+    "name": "Armed Forces Bowl",
+    "zipcode": "76129",
+    "indoors": false
+  },
+  {
+    "name": "First Responder Bowl",
+    "zipcode": "75207",
+    "indoors": false
+  },
+  {
+    "name": "Cheez-It Bowl",
+    "zipcode": "85003",
+    "indoors": false
+  },
+  {
+    "name": "Duke's Mayo Bowl",
+    "zipcode": "27101",
+    "indoors": false
+  },
+  {
+    "name": "Guaranteed Rate Bowl",
+    "zipcode": "85003",
+    "indoors": false
+  },
+  {
+    "name": "Quick Lane Bowl",
+    "zipcode": "48127",
+    "indoors": false
+  },
+  {
+    "name": "LA Bowl",
+    "zipcode": "90301",
+    "indoors": false
+  },
+  {
+    "name": "Myrtle Beach Bowl",
+    "zipcode": "29572",
+    "indoors": false
+  },
+  {
+    "name": "Fenway Bowl",
+    "zipcode": "02215",
+    "indoors": false
+  },
+  {
+    "name": "Redbox Bowl",
+    "zipcode": "94107",
+    "indoors": false
+  },
+  {
+    "name": "Miami Beach Bowl",
+    "zipcode": "33132",
+    "indoors": false
+  },
+  {
+    "name": "Detroit Bowl",
+    "zipcode": "48127",
+    "indoors": false
+  },
+  {
+    "name": "Poinsettia Bowl",
+    "zipcode": "92108",
+    "indoors": false
+  },
+  {
+    "name": "Compass Bowl",
+    "zipcode": "35209",
+    "indoors": false
+  },
+  {
+    "name": "Frisco Classic Bowl",
+    "zipcode": "75034",
+    "indoors": false
+  },
+  {
+    "name": "Amarillo Bowl",
+    "zipcode": "79101",
+    "indoors": false
+  },
+  {
+    "name": "Salt Lake City Bowl",
+    "zipcode": "84108",
+    "indoors": false
+  },
+  {
+    "name": "Nashville Bowl",
+    "zipcode": "37201",
+    "indoors": false
+  },
+  {
+    "name": "Memphis Bowl",
+    "zipcode": "38103",
+    "indoors": false
+  },
+  {
+    "name": "Richmond Bowl",
+    "zipcode": "23173",
+    "indoors": false
+  },
+  {
+    "name": "Baltimore Bowl",
+    "zipcode": "21201",
+    "indoors": false
+  },
+  {
+    "name": "Kansas City Bowl",
+    "zipcode": "64106",
+    "indoors": false
+  },
+  {
+    "name": "St. Louis Bowl",
+    "zipcode": "63103",
+    "indoors": false
+  },
+  {
+    "name": "Louisville Bowl",
+    "zipcode": "40203",
+    "indoors": false
+  },
+  {
+    "name": "Lexington Bowl",
+    "zipcode": "40506",
+    "indoors": false
+  },
+  {
+    "name": "Columbus Bowl",
+    "zipcode": "43215",
+    "indoors": false
+  },
+  {
+    "name": "Indianapolis Bowl",
+    "zipcode": "46204",
+    "indoors": false
+  },
+  {
+    "name": "Milwaukee Bowl",
+    "zipcode": "53203",
+    "indoors": false
+  },
+  {
+    "name": "Minneapolis Bowl",
+    "zipcode": "55403",
+    "indoors": false
+  },
+  {
+    "name": "Chicago Bowl",
+    "zipcode": "60602",
+    "indoors": false
+  },
+  {
+    "name": "Denver Bowl",
+    "zipcode": "80203",
+    "indoors": false
+  },
+  {
+    "name": "Salt Lake Bowl",
+    "zipcode": "84101",
+    "indoors": false
+  },
+  {
+    "name": "Portland Bowl",
+    "zipcode": "97201",
+    "indoors": false
+  },
+  {
+    "name": "Seattle Bowl",
+    "zipcode": "98101",
+    "indoors": false
+  },
+  {
+    "name": "Sacramento Bowl",
+    "zipcode": "95814",
+    "indoors": false
+  },
+  {
+    "name": "Phoenix Bowl",
+    "zipcode": "85001",
+    "indoors": false
+  },
+  {
+    "name": "Tucson Bowl",
+    "zipcode": "85701",
+    "indoors": false
+  },
+  {
+    "name": "Albuquerque Bowl",
+    "zipcode": "87101",
+    "indoors": false
+  },
+  {
+    "name": "Oklahoma City Bowl",
+    "zipcode": "73102",
+    "indoors": false
+  },
+  {
+    "name": "Tulsa Bowl",
+    "zipcode": "74103",
+    "indoors": false
+  },
+  {
+    "name": "Little Rock Bowl",
+    "zipcode": "72201",
+    "indoors": false
+  },
+  {
+    "name": "Jackson Bowl",
+    "zipcode": "39201",
+    "indoors": false
+  },
+  {
+    "name": "Mobile Bowl",
+    "zipcode": "36602",
+    "indoors": false
+  },
+  {
+    "name": "Pensacola Bowl",
+    "zipcode": "32502",
+    "indoors": false
+  },
+  {
+    "name": "Savannah Bowl",
+    "zipcode": "31401",
+    "indoors": false
+  },
+  {
+    "name": "Charleston Bowl",
+    "zipcode": "29403",
+    "indoors": false
+  },
+  {
+    "name": "Greenville Bowl",
+    "zipcode": "27834",
+    "indoors": false
+  },
+  {
+    "name": "Raleigh Bowl",
+    "zipcode": "27601",
+    "indoors": false
+  },
+  {
+    "name": "Charlotte Bowl",
+    "zipcode": "28202",
+    "indoors": false
+  },
+  {
+    "name": "Winston-Salem Bowl",
+    "zipcode": "27101",
+    "indoors": false
+  },
+  {
+    "name": "Knoxville Bowl",
+    "zipcode": "37901",
+    "indoors": false
+  },
+  {
+    "name": "Shreveport Bowl",
+    "zipcode": "71105",
+    "indoors": false
+  },
+  {
+    "name": "Montgomery Bowl",
+    "zipcode": "36104",
+    "indoors": false
+  },
+  {
+    "name": "Huntsville Bowl",
+    "zipcode": "35801",
+    "indoors": false
+  },
+  {
+    "name": "Chattanooga Bowl",
+    "zipcode": "37402",
+    "indoors": false
+  },
+  {
+    "name": "Baton Rouge Bowl",
+    "zipcode": "70803",
+    "indoors": false
+  },
+  {
+    "name": "New Orleans Bowl",
+    "zipcode": "70112",
+    "indoors": false
+  },
+  {
+    "name": "Lubbock Bowl",
+    "zipcode": "79409",
+    "indoors": false
+  },
+  {
+    "name": "Waco Bowl",
+    "zipcode": "76798",
+    "indoors": false
+  },
+  {
+    "name": "El Paso Bowl",
+    "zipcode": "79968",
+    "indoors": false
+  },
+  {
+    "name": "Flagstaff Bowl",
+    "zipcode": "86001",
+    "indoors": false
+  },
+  {
+    "name": "Reno Bowl",
+    "zipcode": "89501",
+    "indoors": false
+  },
+  {
+    "name": "Boise Bowl",
+    "zipcode": "83702",
+    "indoors": false
+  },
+  {
+    "name": "Spokane Bowl",
+    "zipcode": "99201",
+    "indoors": false
+  },
+  {
+    "name": "Missoula Bowl",
+    "zipcode": "59801",
+    "indoors": false
+  },
+  {
+    "name": "Billings Bowl",
+    "zipcode": "59101",
+    "indoors": false
+  },
+  {
+    "name": "Fargo Bowl",
+    "zipcode": "58102",
+    "indoors": false
+  },
+  {
+    "name": "Sioux Falls Bowl",
+    "zipcode": "57101",
+    "indoors": false
+  },
+  {
+    "name": "Corpus Christi Bowl",
+    "zipcode": "78401",
+    "indoors": false
+  },
+  {
+    "name": "Midland Bowl",
+    "zipcode": "79701",
+    "indoors": false
+  },
+  {
+    "name": "Duluth Bowl",
+    "zipcode": "55802",
+    "indoors": false
+  },
+  {
+    "name": "Grand Forks Bowl",
+    "zipcode": "58202",
+    "indoors": false
+  },
+  {
+    "name": "Mankato Bowl",
+    "zipcode": "56001",
+    "indoors": false
+  },
+  {
+    "name": "Dome Bowl",
+    "zipcode": "46204",
+    "indoors": true
+  },
+  {
+    "name": "Superdome Bowl",
+    "zipcode": "70112",
+    "indoors": true
+  },
+  {
+    "name": "Allegiant Bowl",
+    "zipcode": "89118",
+    "indoors": true
+  },
+  {
+    "name": "Lucas Oil Bowl",
+    "zipcode": "46204",
+    "indoors": true
+  },
+  {
+    "name": "US Bank Bowl",
+    "zipcode": "55415",
+    "indoors": true
+  },
+  {
+    "name": "Ford Field Bowl",
+    "zipcode": "48127",
+    "indoors": true
+  },
+  {
+    "name": "JMA Dome Bowl",
+    "zipcode": "13244",
+    "indoors": true
+  },
+  {
+    "name": "Alamodome Bowl",
+    "zipcode": "78219",
+    "indoors": true
+  },
+  {
+    "name": "NRG Stadium Bowl",
+    "zipcode": "77054",
+    "indoors": true
+  },
+  {
+    "name": "State Farm Bowl",
+    "zipcode": "85251",
+    "indoors": true
+  }
+]

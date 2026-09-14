@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "FC:CD Universe Builder"
+version = "1.0.0"
+id = "artifacts/fccd-builder"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25161
+
+[services.development]
+run = "pnpm --filter @workspace/fccd-builder run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/fccd-builder", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/fccd-builder/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25161"
+BASE_PATH = "/"

@@ -1,0 +1,24 @@
+{
+  "paired": [
+    ["East", "West"],
+    ["North", "South"],
+    ["Atlantic", "Pacific"],
+    ["Coastal", "Mountain"],
+    ["American", "National"],
+    ["Gold", "Blue"],
+    ["Red", "White"],
+    ["Crimson", "Gold"],
+    ["Heritage", "Pioneer"],
+    ["Liberty", "Union"],
+    ["Summit", "Valley"],
+    ["Gridiron", "Iron"]
+  ],
+  "quad": [
+    ["North", "South", "East", "West"],
+    ["Atlantic", "Pacific", "Gulf", "Mountain"],
+    ["Coastal", "Inland", "Northern", "Southern"],
+    ["Liberty", "Union", "Heritage", "Pioneer"],
+    ["Alpha", "Beta", "Gamma", "Delta"],
+    ["Iron", "Steel", "Coal", "Gold"]
+  ]
+}

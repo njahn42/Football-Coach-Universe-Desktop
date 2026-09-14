@@ -1,0 +1,21 @@
+{
+  "archetypes": [
+    "balance",
+    "athletes",
+    "speed",
+    "line",
+    "passing",
+    "defense",
+    "recruiting",
+    "development",
+    "academic",
+    "tradition",
+    "rivalry"
+  ],
+  "fanbaseTypes": [
+    "passionate",
+    "casual",
+    "fair-weather",
+    "loyal"
+  ]
+}

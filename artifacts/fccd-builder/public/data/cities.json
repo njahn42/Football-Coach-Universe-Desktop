@@ -1,0 +1,824 @@
+[
+  {
+    "cityName": "Atlanta, GA",
+    "zipcode": "30339",
+    "stadium": "Mercedes-Benz Stadium",
+    "indoors": true
+  },
+  {
+    "cityName": "Indianapolis, IN",
+    "zipcode": "46225",
+    "stadium": "Lucas Oil Stadium",
+    "indoors": true
+  },
+  {
+    "cityName": "New Orleans, LA",
+    "zipcode": "70112",
+    "stadium": "Caesars Superdome",
+    "indoors": true
+  },
+  {
+    "cityName": "Miami, FL",
+    "zipcode": "33056",
+    "stadium": "Hard Rock Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Dallas, TX",
+    "zipcode": "75207",
+    "stadium": "AT&T Stadium",
+    "indoors": true
+  },
+  {
+    "cityName": "Phoenix, AZ",
+    "zipcode": "85251",
+    "stadium": "State Farm Stadium",
+    "indoors": true
+  },
+  {
+    "cityName": "Tampa, FL",
+    "zipcode": "33607",
+    "stadium": "Raymond James Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Charlotte, NC",
+    "zipcode": "28202",
+    "stadium": "Bank of America Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Nashville, TN",
+    "zipcode": "37201",
+    "stadium": "Nissan Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Jacksonville, FL",
+    "zipcode": "32202",
+    "stadium": "TIAA Bank Field",
+    "indoors": false
+  },
+  {
+    "cityName": "Los Angeles, CA",
+    "zipcode": "90301",
+    "stadium": "SoFi Stadium",
+    "indoors": true
+  },
+  {
+    "cityName": "Las Vegas, NV",
+    "zipcode": "89118",
+    "stadium": "Allegiant Stadium",
+    "indoors": true
+  },
+  {
+    "cityName": "Minneapolis, MN",
+    "zipcode": "55415",
+    "stadium": "U.S. Bank Stadium",
+    "indoors": true
+  },
+  {
+    "cityName": "Detroit, MI",
+    "zipcode": "48127",
+    "stadium": "Ford Field",
+    "indoors": true
+  },
+  {
+    "cityName": "Houston, TX",
+    "zipcode": "77054",
+    "stadium": "NRG Stadium",
+    "indoors": true
+  },
+  {
+    "cityName": "San Antonio, TX",
+    "zipcode": "78219",
+    "stadium": "Alamodome",
+    "indoors": true
+  },
+  {
+    "cityName": "Memphis, TN",
+    "zipcode": "38103",
+    "stadium": "Simmons Bank Liberty Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Shreveport, LA",
+    "zipcode": "71105",
+    "stadium": "Independence Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Orlando, FL",
+    "zipcode": "32819",
+    "stadium": "Camping World Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Birmingham, AL",
+    "zipcode": "35233",
+    "stadium": "Protective Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "El Paso, TX",
+    "zipcode": "79968",
+    "stadium": "Sun Bowl Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Albuquerque, NM",
+    "zipcode": "87131",
+    "stadium": "University Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Tucson, AZ",
+    "zipcode": "85721",
+    "stadium": "Arizona Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Honolulu, HI",
+    "zipcode": "96813",
+    "stadium": "Aloha Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "San Diego, CA",
+    "zipcode": "92108",
+    "stadium": "Snapdragon Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Fresno, CA",
+    "zipcode": "93720",
+    "stadium": "Valley Children's Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Sacramento, CA",
+    "zipcode": "95814",
+    "stadium": "Sac Republic Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "San Jose, CA",
+    "zipcode": "95112",
+    "stadium": "CEFCU Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Portland, OR",
+    "zipcode": "97201",
+    "stadium": "Providence Park",
+    "indoors": false
+  },
+  {
+    "cityName": "Seattle, WA",
+    "zipcode": "98101",
+    "stadium": "Husky Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Boise, ID",
+    "zipcode": "83725",
+    "stadium": "Albertsons Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Provo, UT",
+    "zipcode": "84602",
+    "stadium": "LaVell Edwards Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Salt Lake City, UT",
+    "zipcode": "84112",
+    "stadium": "Rice-Eccles Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Denver, CO",
+    "zipcode": "80203",
+    "stadium": "Empower Field at Mile High",
+    "indoors": false
+  },
+  {
+    "cityName": "Colorado Springs, CO",
+    "zipcode": "80840",
+    "stadium": "Falcon Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Fort Collins, CO",
+    "zipcode": "80523",
+    "stadium": "Canvas Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Laramie, WY",
+    "zipcode": "82071",
+    "stadium": "War Memorial Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Reno, NV",
+    "zipcode": "89557",
+    "stadium": "Mackay Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Norman, OK",
+    "zipcode": "73019",
+    "stadium": "Gaylord Family Oklahoma Memorial Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Stillwater, OK",
+    "zipcode": "74078",
+    "stadium": "T. Boone Pickens Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Austin, TX",
+    "zipcode": "78712",
+    "stadium": "Darrell K Royal-Texas Memorial Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Lubbock, TX",
+    "zipcode": "79409",
+    "stadium": "Jones AT&T Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Waco, TX",
+    "zipcode": "76798",
+    "stadium": "McLane Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Fort Worth, TX",
+    "zipcode": "76129",
+    "stadium": "Amon G. Carter Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Manhattan, KS",
+    "zipcode": "66506",
+    "stadium": "Bill Snyder Family Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Lawrence, KS",
+    "zipcode": "66045",
+    "stadium": "David Booth Kansas Memorial Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Iowa City, IA",
+    "zipcode": "52242",
+    "stadium": "Kinnick Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Ames, IA",
+    "zipcode": "50011",
+    "stadium": "Jack Trice Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Lincoln, NE",
+    "zipcode": "68588",
+    "stadium": "Memorial Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Columbia, MO",
+    "zipcode": "65211",
+    "stadium": "Faurot Field at Memorial Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Fayetteville, AR",
+    "zipcode": "72701",
+    "stadium": "Donald W. Reynolds Razorback Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Tuscaloosa, AL",
+    "zipcode": "35401",
+    "stadium": "Bryant-Denny Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Auburn, AL",
+    "zipcode": "36830",
+    "stadium": "Jordan-Hare Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Athens, GA",
+    "zipcode": "30601",
+    "stadium": "Sanford Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Baton Rouge, LA",
+    "zipcode": "70803",
+    "stadium": "Tiger Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Gainesville, FL",
+    "zipcode": "32611",
+    "stadium": "Ben Hill Griffin Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Knoxville, TN",
+    "zipcode": "37902",
+    "stadium": "Neyland Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "College Station, TX",
+    "zipcode": "77843",
+    "stadium": "Kyle Field",
+    "indoors": false
+  },
+  {
+    "cityName": "Oxford, MS",
+    "zipcode": "38677",
+    "stadium": "Vaught-Hemingway Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Starkville, MS",
+    "zipcode": "39762",
+    "stadium": "Davis Wade Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Louisville, KY",
+    "zipcode": "40292",
+    "stadium": "Cardinal Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Lexington, KY",
+    "zipcode": "40506",
+    "stadium": "Kroger Field",
+    "indoors": false
+  },
+  {
+    "cityName": "Columbia, SC",
+    "zipcode": "29208",
+    "stadium": "Williams-Brice Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Ann Arbor, MI",
+    "zipcode": "48109",
+    "stadium": "Michigan Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Columbus, OH",
+    "zipcode": "43210",
+    "stadium": "Ohio Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "State College, PA",
+    "zipcode": "16802",
+    "stadium": "Beaver Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "East Lansing, MI",
+    "zipcode": "48824",
+    "stadium": "Spartan Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Madison, WI",
+    "zipcode": "53706",
+    "stadium": "Camp Randall Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Champaign, IL",
+    "zipcode": "61820",
+    "stadium": "Memorial Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Bloomington, IN",
+    "zipcode": "47405",
+    "stadium": "Memorial Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "West Lafayette, IN",
+    "zipcode": "47907",
+    "stadium": "Ross-Ade Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Evanston, IL",
+    "zipcode": "60208",
+    "stadium": "Ryan Field",
+    "indoors": false
+  },
+  {
+    "cityName": "Eugene, OR",
+    "zipcode": "97403",
+    "stadium": "Autzen Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Pasadena, CA",
+    "zipcode": "91103",
+    "stadium": "Rose Bowl",
+    "indoors": false
+  },
+  {
+    "cityName": "Los Angeles, CA",
+    "zipcode": "90007",
+    "stadium": "Los Angeles Memorial Coliseum",
+    "indoors": false
+  },
+  {
+    "cityName": "Clemson, SC",
+    "zipcode": "29632",
+    "stadium": "Memorial Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Tallahassee, FL",
+    "zipcode": "32306",
+    "stadium": "Doak S. Campbell Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Coral Gables, FL",
+    "zipcode": "33146",
+    "stadium": "Hard Rock Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Chapel Hill, NC",
+    "zipcode": "27599",
+    "stadium": "Kenan Memorial Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Raleigh, NC",
+    "zipcode": "27695",
+    "stadium": "Carter-Finley Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Charlottesville, VA",
+    "zipcode": "22904",
+    "stadium": "Scott Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Blacksburg, VA",
+    "zipcode": "24061",
+    "stadium": "Lane Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Durham, NC",
+    "zipcode": "27708",
+    "stadium": "Wallace Wade Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Winston-Salem, NC",
+    "zipcode": "27109",
+    "stadium": "Truist Field",
+    "indoors": false
+  },
+  {
+    "cityName": "Chestnut Hill, MA",
+    "zipcode": "02467",
+    "stadium": "Alumni Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Pittsburgh, PA",
+    "zipcode": "15213",
+    "stadium": "Acrisure Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Boone, NC",
+    "zipcode": "28608",
+    "stadium": "Kidd Brewer Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Conway, SC",
+    "zipcode": "29528",
+    "stadium": "Brooks Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Jonesboro, AR",
+    "zipcode": "72467",
+    "stadium": "Centennial Bank Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Hattiesburg, MS",
+    "zipcode": "39406",
+    "stadium": "M.M. Roberts Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Murfreesboro, TN",
+    "zipcode": "37132",
+    "stadium": "Floyd Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Denton, TX",
+    "zipcode": "76203",
+    "stadium": "Apogee Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Dekalb, IL",
+    "zipcode": "60115",
+    "stadium": "Huskie Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Ypsilanti, MI",
+    "zipcode": "48197",
+    "stadium": "Rynearson Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Mount Pleasant, MI",
+    "zipcode": "48858",
+    "stadium": "Kelly/Shorts Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Athens, OH",
+    "zipcode": "45701",
+    "stadium": "Peden Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Oxford, OH",
+    "zipcode": "45056",
+    "stadium": "Yager Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Kent, OH",
+    "zipcode": "44242",
+    "stadium": "Dix Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Bowling Green, OH",
+    "zipcode": "43403",
+    "stadium": "Doyt Perry Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Toledo, OH",
+    "zipcode": "43606",
+    "stadium": "Glass Bowl",
+    "indoors": false
+  },
+  {
+    "cityName": "Kalamazoo, MI",
+    "zipcode": "49008",
+    "stadium": "Waldo Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Akron, OH",
+    "zipcode": "44325",
+    "stadium": "InfoCision Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Buffalo, NY",
+    "zipcode": "14260",
+    "stadium": "UB Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Logan, UT",
+    "zipcode": "84322",
+    "stadium": "Merlin Olsen Field",
+    "indoors": false
+  },
+  {
+    "cityName": "Missoula, MT",
+    "zipcode": "59812",
+    "stadium": "Washington-Grizzly Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Fargo, ND",
+    "zipcode": "58102",
+    "stadium": "Fargodome",
+    "indoors": true
+  },
+  {
+    "cityName": "Brookings, SD",
+    "zipcode": "57007",
+    "stadium": "Dana J. Dykhouse Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Bozeman, MT",
+    "zipcode": "59717",
+    "stadium": "Bobcat Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Villanova, PA",
+    "zipcode": "19085",
+    "stadium": "Villanova Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Newark, DE",
+    "zipcode": "19716",
+    "stadium": "Delaware Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Richmond, VA",
+    "zipcode": "23173",
+    "stadium": "E. Claiborne Robins Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Charlotte, NC",
+    "zipcode": "28223",
+    "stadium": "Jerry Richardson Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "San Francisco, CA",
+    "zipcode": "94107",
+    "stadium": "Levi's Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Kansas City, MO",
+    "zipcode": "64106",
+    "stadium": "Arrowhead Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "St. Louis, MO",
+    "zipcode": "63103",
+    "stadium": "The Dome at America's Center",
+    "indoors": true
+  },
+  {
+    "cityName": "Cleveland, OH",
+    "zipcode": "44114",
+    "stadium": "FirstEnergy Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Cincinnati, OH",
+    "zipcode": "45202",
+    "stadium": "Paycor Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Baltimore, MD",
+    "zipcode": "21201",
+    "stadium": "M&T Bank Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Washington, DC",
+    "zipcode": "20001",
+    "stadium": "FedExField",
+    "indoors": false
+  },
+  {
+    "cityName": "Philadelphia, PA",
+    "zipcode": "19112",
+    "stadium": "Lincoln Financial Field",
+    "indoors": false
+  },
+  {
+    "cityName": "New York, NY",
+    "zipcode": "10451",
+    "stadium": "Yankee Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Chicago, IL",
+    "zipcode": "60644",
+    "stadium": "Soldier Field",
+    "indoors": false
+  },
+  {
+    "cityName": "Green Bay, WI",
+    "zipcode": "54304",
+    "stadium": "Lambeau Field",
+    "indoors": false
+  },
+  {
+    "cityName": "Milwaukee, WI",
+    "zipcode": "53203",
+    "stadium": "American Family Field",
+    "indoors": false
+  },
+  {
+    "cityName": "Syracuse, NY",
+    "zipcode": "13244",
+    "stadium": "JMA Wireless Dome",
+    "indoors": true
+  },
+  {
+    "cityName": "Boca Raton, FL",
+    "zipcode": "33431",
+    "stadium": "FAU Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Greenville, NC",
+    "zipcode": "27858",
+    "stadium": "Dowdy-Ficklen Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Mobile, AL",
+    "zipcode": "36606",
+    "stadium": "Ladd-Peebles Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Montgomery, AL",
+    "zipcode": "36104",
+    "stadium": "Cramton Bowl",
+    "indoors": false
+  },
+  {
+    "cityName": "Corpus Christi, TX",
+    "zipcode": "78401",
+    "stadium": "American Bank Center",
+    "indoors": true
+  },
+  {
+    "cityName": "Spokane, WA",
+    "zipcode": "99201",
+    "stadium": "Avista Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Flagstaff, AZ",
+    "zipcode": "86001",
+    "stadium": "Walkup Skydome",
+    "indoors": true
+  },
+  {
+    "cityName": "Chattanooga, TN",
+    "zipcode": "37402",
+    "stadium": "Finley Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Fargo2, ND",
+    "zipcode": "58103",
+    "stadium": "Gate City Bank Field",
+    "indoors": false
+  },
+  {
+    "cityName": "Grand Forks, ND",
+    "zipcode": "58202",
+    "stadium": "Alerus Center",
+    "indoors": true
+  },
+  {
+    "cityName": "Duluth, MN",
+    "zipcode": "55802",
+    "stadium": "Malosky Stadium",
+    "indoors": false
+  },
+  {
+    "cityName": "Billings, MT",
+    "zipcode": "59101",
+    "stadium": "Dehler Park",
+    "indoors": false
+  }
+]

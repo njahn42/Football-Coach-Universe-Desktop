@@ -1,0 +1,384 @@
+# Replit Build Spec: FC:CD Custom Universe Builder (Steam Deck)
+
+## 1. Goal
+A controller-first desktop app that lets a user draft real teams and bowl
+games from a fixed database into custom conferences, then exports a
+universe JSON file that satisfies Football Coach: College Dynasty's
+custom universe rules. Runs on Steam Deck in Desktop Mode (and can be
+added as a non-Steam game for Gaming Mode).
+
+## 2. Recommended stack
+**Python 3 + Pygame.** Reasons:
+- Native SDL2 gamepad support — Steam Deck controls enumerate as a
+  standard controller (`pygame.joystick`), no extra mapping work needed
+  in Desktop Mode.
+- Built-in `json` module for reading the bundled database and writing
+  the final universe file — no serialization gotchas.
+- Runs as a single local app; no server/browser dependency, no network
+  needed at runtime once built.
+- Packages cleanly as a self-contained folder you can drop on the Deck
+  and launch from Desktop Mode, or add to Steam as a non-Steam game
+  shortcut for Big Picture / Gaming Mode with Steam Input.
+
+Controller mapping (standard Xbox-layout, matches Deck's Desktop Mode
+gamepad emulation):
+- **D-pad / left stick**: move selection
+- **A**: select / confirm
+- **B**: back / cancel
+- **X**: toggle multi-select (e.g. adding a team to a conference)
+- **Y**: quick actions (e.g. randomize remaining slots, jump to search)
+- **Shoulder buttons (LB/RB)**: switch tabs/panels (e.g. Teams ↔ Conferences ↔ Bowls)
+- **Triggers (LT/RT)**: page up/down long lists
+- **Start**: open save/export menu
+
+**Mouse support (first-class, not just a fallback)**: every element a
+controller can reach must also be directly clickable — list rows,
+dropdown options, steppers (click +/- targets or scroll wheel to
+increment), reorder buttons, tabs. Both input methods should work
+interchangeably at any time without a mode switch or restart — e.g. a
+user can navigate with the stick, then click a dropdown option with
+the trackpad/mouse, then go back to the D-pad, with focus updating to
+match whichever was used last. This matters on Deck too, since the
+trackpads and gyro emulate a mouse in Desktop Mode, and it's the only
+input method in plain desktop/laptop use. Practically in Pygame: run
+both `pygame.joystick` and `pygame.mouse`/`MOUSEBUTTONDOWN` event
+handling in the same loop, with a single shared "focused element"
+concept that either input can move.
+- Keyboard remains available too (for the opt-in text-edit fields from
+  §5, and as a full alternative to controller/mouse for navigation).
+
+## 3. Data source (bundle with the app, do not let the user free-type these)
+Three files ship inside the app's `data/` folder, generated from the
+provided database:
+
+- `teams.json` — 260 real teams (137 FBS, 123 FCS), each with name,
+  zipcode, abbreviation, mascot, state, division tag, colors,
+  attendance, attributes (prestige, facilities, stadium, collegeLife,
+  academics, marketing, fanbaseLevel — all 1–10), archetype, fanbaseType.
+- `bowls.json` — 100 real bowl games, each with name, zipcode, indoors.
+- `enums.json` — the authoritative list of 11 archetypes and 4
+  fanbaseTypes (for reference/filtering; not user-editable).
+- `cities.json` — 139 real cities, each with `cityName` (e.g. "Ann
+  Arbor, MI"), `zipcode`, `stadium` (home stadium name), and `indoors`.
+  Used specifically for picking CCG sites (see Conferences below).
+- `conference_names.json` — 40 curated conference name options (e.g.
+  "Atlantic Conference", "Heartland Conference"), so conference naming
+  is a dropdown pick instead of free typing. See §5 for how it's used.
+- `division_names.json` — curated division-name sets: 12 paired sets
+  (for 2-division conferences, e.g. `["East", "West"]`) and 6 quad
+  sets (for 4-division conferences, e.g. `["North", "South", "East",
+  "West"]`). See §5 and the Conferences rules below.
+
+The user drafts *from* these lists only — no free-text team/bowl
+creation in v1. This means most validation is just "did the user
+respect draft-pool and structural constraints," not deep field
+validation, which keeps the tool simple.
+
+## 4. Universe construction rules to enforce
+
+**Top-level JSON output must include:** `name`, `startingYear`,
+`startingMessage`, `conferences`, `bowlGames`.
+**Optional top-level field:** `oocRivalries` — included only if the
+user adds at least one entry in that step (see below); omitted
+entirely otherwise.
+
+**Conferences**
+- User must select exactly **6, 8, or 10** conferences.
+- Each conference needs: `name` (picked from `conference_names.json`
+  — see §5, not typed), `prestigeLevel`
+  (**auto-generated from drafted teams — see §4b, not entered here**),
+  `zipcode` (CCG site), `divisions`.
+- **CCG site selection**: the user picks a **city name** from a
+  dropdown populated by `cities.json` (e.g. "Atlanta, GA — Mercedes-
+  Benz Stadium"), not a raw zip code. The app looks up the matching
+  `zipcode` behind the scenes and writes that into the conference's
+  `zipcode` field. This avoids typos/invalid zips entirely — the user
+  never sees or enters a zip code directly. Showing the stadium name
+  and indoor/outdoor flag alongside the city in the dropdown gives
+  useful context (e.g. picking a dome for a cold-weather CCG).
+- Each conference's division layout must be exactly one of:
+  - 1 division of 10 teams
+  - 2 divisions of 6, 7, or 9 teams each (both divisions same size)
+  - 4 divisions of 4 or 5 teams each (all four same size)
+- UI should only let the user pick a valid division layout (e.g. a
+  segmented control: "1×10 / 2×6 / 2×7 / 2×9 / 4×4 / 4×5"), then fill
+  slots from the team pool — this avoids ever reaching an invalid
+  state rather than validating after the fact.
+- **Division naming** (no typing — see §5): once a layout is chosen,
+  division names are auto-assigned, not typed:
+  - **1 division**: name defaults to the conference's own name (no
+    separate decision needed — nothing to distinguish it from).
+  - **2 divisions**: pick one paired set from `division_names.json`
+    (e.g. "East / West") via dropdown; Y cycles to another pair. The
+    two names apply to the two divisions in the order the user built
+    them.
+  - **4 divisions**: same idea with a quad set (e.g. "North / South /
+    East / West").
+- **Hard universe-wide cap: 200 teams max** (10 conferences × 20 teams,
+  the largest legal division layout — 4 divisions × 5). This is a
+  natural ceiling given the division-layout rule above, but track a
+  running total across all conferences and disable further drafting
+  once hit, as a safety net in case of edge cases.
+
+**Teams (drafted from `teams.json`)**
+- A team can only be assigned to one conference/division in the whole
+  universe — once drafted, remove it from the available pool shown to
+  the user.
+- `abbreviation` must be unique league-wide (guaranteed automatically
+  since each team is only used once).
+- `rivalAbbreviation` must resolve to another team **within the same
+  division**. UI: after a division is filled, let the user pick each
+  team's rival from a dropdown scoped to that division's other members
+  only (prevents invalid cross-division rivalries by construction).
+- Pull through unchanged from the database: `name`, `mascot`,
+  `abbreviation`, `primaryColor`, `secondaryColor`, `zipcode`,
+  `attributes`. (`archetype`/`fanbaseType` aren't in the required
+  output schema per the user's rules — carry them through anyway since
+  they cost nothing and may be used by the game; strip if the game
+  rejects unknown fields.)
+
+**4a. Team draft filters**
+The draft-teams screen needs combinable dropdown filters at the top,
+scoped to whatever remains in the undrafted pool:
+- **Division**: FBS (1A) / FCS (1B)
+- **State**
+- **Archetype** (11 values from `enums.json`)
+- **Fanbase Type** (4 values from `enums.json`)
+
+Filters combine with AND logic (e.g. FBS + Texas + football-focused)
+and update the visible list live as the user cycles options with
+LB/RB or the d-pad. A "Clear Filters" action (Y button) resets to the
+full remaining pool. Filtering only changes what's *displayed* — it
+never removes a team from the draftable pool, so switching or
+resetting filters mid-draft is always safe and non-destructive.
+
+**4b. Conference prestige (auto-generated)**
+- `teams.json` now includes a `rating` field per team (pulled from the
+  database's precomputed `total` score, range ~35–194 across the pool).
+- Once **all** slots in a conference are filled, compute that
+  conference's **average team rating** (mean of its members'
+  `rating` values).
+- Rank all conferences by that average, highest to lowest. Assign
+  `prestigeLevel = 11 - rank` (rank 1 = highest average → prestige 10,
+  rank 2 → 9, and so on). This guarantees uniqueness automatically and
+  always stays within 1–10 regardless of whether there are 6, 8, or 10
+  conferences (worst case, prestige floor is 5, 3, or 1 respectively).
+- **Live behavior**: recompute and display each conference's current
+  average + provisional rank on the Draft Teams screen as it fills up
+  (clearly marked "provisional" until every conference is complete —
+  rankings can shift as more teams are added elsewhere). Once every
+  conference has all its slots filled, prestige levels lock in as
+  final (still recalculates if the user goes back and edits a roster).
+- **Manual override**: on a dedicated Conference Prestige screen
+  (after drafting, before rivalries), show the auto-assigned values
+  and let the user change any conference's `prestigeLevel` directly
+  via a stepper. The same uniqueness rule still applies here — the UI
+  blocks entering a value already used by another conference, exactly
+  like the original manual-entry behavior. Overriding one conference
+  does not auto-recalculate the others; the user manages any resulting
+  gaps/order themselves.
+
+**Out-of-conference rivalries (optional)**
+- Separate from the required in-division `rivalAbbreviation` field —
+  this is an optional extra list of scheduled rivalry games between
+  any two drafted teams (typically across conferences, but the game
+  doesn't require that — e.g. two same-conference teams in different
+  divisions can still have one).
+- Each entry: `teamA`, `teamB` (abbreviations), `preferredSlot`
+  (integer — which week of the season the game is targeted for),
+  `cadence` (integer — how often the game recurs, in years; 1 = every
+  year), `offset` (integer, `0` to `cadence - 1` — which year within
+  the cadence cycle the series starts).
+- UI: a simple add/remove list. "Add Rivalry" opens Team A picker →
+  Team B picker (both scoped to the full drafted-team roster, Team B
+  list excludes Team A) → three numeric steppers for preferredSlot /
+  cadence / offset (offset's max auto-clamps to `cadence - 1` as
+  cadence changes). Entries show as a scrollable list with a remove
+  action (X button) per row.
+- Validation: `teamA != teamB`; no duplicate pair (block adding the
+  same two teams twice, in either order); `offset < cadence`;
+  `preferredSlot` within a reasonable season-week range (default 1–15
+  — flag as a "verify" item against the game's actual season length).
+- This step is entirely optional — zero entries is valid, and
+  `oocRivalries` can be omitted from the output if empty.
+
+**Bowl games (drafted from `bowls.json`)**
+- User selects however many bowls they want (0–40), then **orders them
+  by importance** — this order is the array order in the output *and*
+  determines priority when multiple bowls compete for the same
+  conference's teams (confirmed by a prior workflow draft the user
+  built: bowl order = conference tie-in priority).
+- Output includes `name`, `zipcode`, and **`indoors`** (boolean, pulled
+  straight from `bowls.json` — not user-editable, since it's a
+  physical fact about the stadium).
+- **Conference tie-ins**: each bowl has two matchup slots. For each
+  slot, the user assigns:
+  - a **primary conference** (required once a tie-in is set up at all)
+  - an optional **backup conference**, used if the primary conference's
+    eligible teams are already claimed by a higher-priority bowl
+  Setting up tie-ins is optional per bowl — a bowl can be left with no
+  conference affiliation (open/at-large slot). Output shape:
+  ```json
+  "tieIn": {
+    "first": ["<primary conf>", "<backup conf, if set>"],
+    "second": ["<primary conf>", "<backup conf, if set>"]
+  }
+  ```
+  Omit `tieIn` entirely for bowls with no assigned matchups.
+  UI: on the bowl-ordering screen, each bowl row expands (A button) to
+  a small sub-panel with 4 dropdowns (Slot 1 primary/backup, Slot 2
+  primary/backup), each populated from the conferences the user has
+  already created.
+- **Validation — bowls vs. available teams**: since each bowl needs 2
+  teams, warn (non-blocking, shown on the Review screen and live on
+  the bowl-selection screen as a running counter) if
+  `(number of selected bowls × 2) > total drafted teams` in the
+  universe. This is a soft warning, not a hard block — the user may
+  intend for some teams to appear unbowled — but should be visible
+  before export so it's not a surprise.
+
+**Metadata**
+- `name`, `startingYear`, `startingMessage` — see §5. All three have
+  sensible auto-generated defaults; free-text keyboard entry is
+  available but never required.
+
+## 5. Minimizing controller typing (Steam Deck priority)
+Every field defaults to a no-typing path. On-screen keyboard is only
+ever reached via an explicit opt-in "Edit" action — never required to
+progress.
+
+- **Universe name**: auto-suggest a default (e.g. "{startingYear}
+  Custom Universe" once year is picked, or a placeholder like "New
+  Universe" before that). Y cycles a few alternate auto-generated
+  suggestions; A accepts. X opens the keyboard only if the user wants
+  a fully custom name.
+- **Starting year**: numeric stepper (LT/RT for ±1, LB/RB for ±10),
+  bounded to a reasonable range (e.g. 1950–2100) — never a keyboard.
+- **Starting message**: auto-filled from a template, e.g. "Welcome to
+  the {startingYear} season of {name}!" — regenerated live as
+  name/year change. Y cycles a couple of alternate templates. Editing
+  is optional via the same explicit keyboard opt-in.
+- **Conference names**: picked from `conference_names.json` (40
+  options) via dropdown, one per conference, already-used names
+  removed from the list as they're picked. If the user ever exhausts
+  the bank (>40 conferences — not possible under the 6/8/10 rule, so
+  this never actually triggers) fall back to keyboard entry.
+- **Division names**: auto-assigned per §Conferences above — single
+  divisions inherit the conference name, 2/4-division layouts pick a
+  themed set from `division_names.json` with Y to cycle alternates.
+  No name is ever typed by default.
+- **Save filename**: auto-derived from the universe name + today's
+  date (e.g. `2026_custom_universe_2026-07-17.json`), shown on the
+  export screen. Editable via the same opt-in keyboard action if the
+  user wants a different filename.
+
+Net effect: a full build start-to-finish requires **zero mandatory
+typing** — every screen can be completed with d-pad/stick + face
+buttons alone. Keyboard only appears if the user deliberately chooses
+to customize text.
+
+## 6. Suggested screen flow
+1. **Universe Info** — auto-suggested name/message (cycle with Y,
+   accept with A), year via stepper. No typing required; keyboard
+   opt-in only.
+2. **Conference Count** — choose 6/8/10.
+3. **Per-Conference Setup** (repeat per conference) — pick name from
+   the curated dropdown bank, CCG site (pick city from dropdown, zip
+   auto-mapped), division layout, then division names auto-assigned
+   (single division inherits conference name; 2/4-division layouts
+   pick a themed pair/quad set, Y to cycle alternates). (Prestige is
+   no longer set here — see step 5.)
+4. **Draft Teams** — grid/list of remaining pool teams, with
+   combinable dropdown filters (Division/FBS-FCS, State, Archetype,
+   Fanbase Type) to narrow the view; assign filtered results to open
+   division slots. Progress indicator showing slots filled per
+   conference, plus each conference's live provisional average
+   rating/prestige rank as it fills. See §4a for filter detail.
+5. **Conference Prestige Review** — final auto-assigned prestige
+   levels (from §4b) shown per conference, with manual override
+   available before moving on.
+6. **Set Rivalries** — per division, pair up teams.
+7. **Set OOC Rivalries (optional)** — add/remove cross-conference (or
+   cross-division) rivalry games from the full drafted roster; skip
+   entirely if not wanted.
+8. **Draft & Order Bowls** — pick from bowl pool (0–40), reorder by
+   importance, optionally expand any bowl to set its conference tie-ins
+   (primary + backup per slot). Running counter warns if selected
+   bowls × 2 exceeds total drafted teams.
+9. **Review & Export** — summary view, validation check pass/fail list,
+   "Save JSON" writes the file and shows the save path.
+
+## 7. Validation checklist (run before allowing export)
+- [ ] Conference count is 6, 8, or 10
+- [ ] All `prestigeLevel` values unique (whether auto-assigned or
+      manually overridden)
+- [ ] Every conference's division layout matches an allowed pattern
+- [ ] Total drafted teams ≤ 200 (10 × 20 hard cap)
+- [ ] Every division slot is filled (no partial divisions)
+- [ ] Every team's `rivalAbbreviation` exists in the same division
+- [ ] At least 1 bowl game selected
+- [ ] Any tie-in's primary/backup conferences reference conferences
+      that actually exist in this universe
+- [ ] Each OOC rivalry has `teamA != teamB`, no duplicate pairs, and
+      `offset < cadence` (only checked if any entries exist — the
+      whole feature is optional)
+- [ ] `startingYear` is a valid integer
+- [ ] (soft warning, non-blocking) bowl count × 2 vs. total teams —
+      shown but does not prevent export
+
+## 8. Save/output behavior
+- Write to a user-chosen filename in a local `output/` folder (Steam
+  Deck-friendly path, e.g. `~/fccd_universes/`).
+- Pretty-print JSON (indent=2) for readability/manual tweaking later.
+- On successful export, show the full file path so the user knows
+  where to find it for import into the game.
+
+## 9. Logo / image support
+The game accepts PNG logos for custom universes, in a fixed folder
+structure:
+```
+/images
+  /teams        (e.g. "Alabama.png", "Auburn.png", "Southern California.png")
+  /conferences  (e.g. "Midwest.png", "Prairie.png", "Atlantic.png")
+  /bowls        (e.g. "Lilac Bowl.png", "Dolphin Bowl.png")
+  /playoffs     (e.g. "Quarterfinals.png" — generic round graphics,
+                 not tied to a specific draft choice)
+```
+Filenames match the entity's exact display name (team `name`,
+conference `name`, bowl `name`) — not the abbreviation.
+
+**In-app UI use**: once this asset folder exists locally, the app
+should show each logo as a thumbnail next to its entry wherever that
+entity appears — team rows in the draft list, conference headers,
+bowl rows in the selection/ordering screen. If a name has no matching
+PNG, fall back to a simple generic placeholder icon (e.g. a blank
+shield outline) rather than erroring or leaving a blank gap — this
+also means the tool works fine even with a partial logo set.
+
+**Export behavior**: when saving a universe, in addition to the JSON,
+copy the matching logo files for everything actually used in that
+universe (drafted teams, created conferences, selected bowls, plus
+the full `/playoffs` set since those aren't draft-specific) into an
+`/images` folder alongside the output JSON, preserving the same
+subfolder structure — so the export is immediately drop-in ready for
+the game.
+
+**Open item — sourcing the actual PNGs**: the database files pulled
+into this project (`teams.json`, `bowls.json`, etc.) don't contain
+any image data — they're just text/attributes. Actual logo artwork
+needs to be sourced and added to a local `/images` folder in the
+project separately (e.g. from whatever logo set was used to build
+those sample universe files originally); this build spec assumes that
+folder will be supplied, not generated by the tool itself. Also worth
+deciding up front how to handle name/filename mismatches (e.g. special
+characters like "Texas A&M", ampersands, apostrophes) — recommend
+normalizing both the entity name and filename lookup (strip/replace
+special characters consistently) so a small punctuation difference
+doesn't silently break the logo match.
+
+## 10. Open items to verify against the actual game before finalizing
+- Whether `bowlGames` entries need `indoors` or a `tieIn` field, or
+  just `name`/`zipcode` as stated.
+- Any additional required fields the in-game importer checks for that
+  aren't caught by these samples (test with a minimal valid file first).
+- Total team-count ceiling across the whole universe, if any.
