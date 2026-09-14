@@ -1,14 +1,27 @@
 {
-  "name": "workspace",
-  "version": "0.0.0",
+  "name": "football-coach-universe-desktop",
+  "productName": "Football Coach Universe",
+  "version": "0.1.0",
   "license": "MIT",
+  "private": true,
+  "type": "module",
+  "main": "dist/desktop/main.js",
   "scripts": {
-    "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
+    "preinstall": "node scripts/enforce-pnpm.mjs",
+  
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
     "typecheck:libs": "tsc --build",
-    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
+    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck",
+  
+    "builder:dev": "pnpm --filter @workspace/fccd-builder dev",
+    "builder:build": "cross-env DESKTOP_BUILD=true pnpm --filter @workspace/fccd-builder build",
+  
+    "desktop:compile": "node scripts/build-desktop.mjs",
+    "desktop:build": "pnpm run builder:build && pnpm run desktop:compile",
+  
+    "desktop:start": "electron .",
+    "desktop:dev": "concurrently -k \"pnpm run builder:dev\" \"wait-on http://localhost:5173 && cross-env ELECTRON_RENDERER_URL=http://localhost:5173 electron .\""
   },
-  "private": true,
   "dependencies": {
     "@replit/connectors-sdk": "^0.4.1"
   },
