@@ -8,17 +8,13 @@
   "main": "dist/desktop/main.js",
   "scripts": {
     "preinstall": "node scripts/enforce-pnpm.mjs",
-  
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck",
-  
     "builder:dev": "pnpm --filter @workspace/fccd-builder dev",
     "builder:build": "cross-env DESKTOP_BUILD=true pnpm --filter @workspace/fccd-builder build",
-  
     "desktop:compile": "node scripts/build-desktop.mjs",
     "desktop:build": "pnpm run builder:build && pnpm run desktop:compile",
-  
     "desktop:start": "electron .",
     "desktop:dev": "concurrently -k \"pnpm run builder:dev\" \"wait-on http://localhost:5173 && cross-env ELECTRON_RENDERER_URL=http://localhost:5173 electron .\""
   },
@@ -26,7 +22,12 @@
     "@replit/connectors-sdk": "^0.4.1"
   },
   "devDependencies": {
+    "concurrently": "^10.0.5",
+    "cross-env": "^10.1.0",
+    "electron": "^44.3.0",
+    "esbuild": "0.27.3",
     "prettier": "^3.9.5",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "wait-on": "^9.1.0"
   }
 }
