@@ -2,6 +2,8 @@
   "name": "football-coach-universe-desktop",
   "productName": "Football Coach Universe",
   "version": "0.1.0",
+  "description": "Desktop application for creating and managing Football Coach Universe game data.",
+  "author": "Nate Jahn",
   "license": "MIT",
   "private": true,
   "type": "module",
