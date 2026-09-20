@@ -76,3 +76,5 @@ allowBuilds:
   esbuild: true
   msw: true
   unrs-resolver: true
+
+nodeLinker: hoisted
